@@ -1,4 +1,4 @@
-import {Card} from './card';
+import { Card } from "./card";
 class Ability {
 	name: string;
 	constructor(name: string) {
@@ -10,7 +10,6 @@ class Ability {
 	clear() {}
 	//@ts-ignore
 	copyAbilityTo(otherCard: Card) {}
-	//@ts-check
 }
 export {Ability}
 //@typedef {typeof Ability} StaticAbility

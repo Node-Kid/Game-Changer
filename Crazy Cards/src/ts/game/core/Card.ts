@@ -4,8 +4,8 @@ class Card {
 	name: string;
 	cost: number;
 	id: number;
-	abilities: Array<Ability>
-	constructor(name: string, cost: number, id: number, abilities: Array<Ability>) {
+	abilities: Ability[]
+	constructor(name: string, cost: number, id: number, abilities: Ability[]) {
 		this.name = name;
 		this.cost = cost;
 		this.id = id;

@@ -1,7 +1,9 @@
 class System {
 	enabled: boolean;
-	constructor() {
+	name: string;
+	constructor(name: string) {
 		this.enabled = true;
+		this.name = name;
 	}
 	enable(): void {
 		this.enabled = true;
@@ -14,6 +16,9 @@ class System {
 	}
 	getState(): boolean {
 		return this.enabled;
+	}
+	getName(): string {
+		return this.name;
 	}
 }
 export {System}
