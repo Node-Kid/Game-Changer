@@ -7,14 +7,7 @@ class Ability {
 	getName(): string {
 		return this.name;
 	}
-	/*
-	* Clears Ability from Card
-	*/
 	clear() {}
-	/*
-	* Copy the current ability to other card
-	* @param {Card} otherCard
-	*/
 	//@ts-ignore
 	copyAbilityTo(otherCard: Card) {}
 	//@ts-check
