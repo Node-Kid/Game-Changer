@@ -20,6 +20,22 @@ class Card {
 	addAbility(newAbility: Ability): void {
 		this.abilities.push(newAbility);
 	}
+	removeAbility(ability: Ability): void {
+		const index = this.abilities.indexOf(ability, 0);
+		if(index > -1) this.abilities.splice(index, 1);
+	}
+	hasAbility(ability: Ability): boolean {
+		const index = this.abilities.indexOf(ability, 0);
+		return (index > -1) ? true : false;
+	}
+	getAbility(abilityName: string){
+		for(const ability of this.abilities) {
+			if(ability.getName() == abilityName) {
+				return ability;
+			}
+		}
+		return null;
+	}
 	
 }
 export {Card}
