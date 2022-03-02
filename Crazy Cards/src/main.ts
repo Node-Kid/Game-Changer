@@ -1,3 +1,3 @@
 import { Root } from "./ts/root";
-
-console.log(Root.root);
+const GameRoot = new Root();
+GameRoot.ImageCache.cacheImage("./images/cards/test_card.jpg");
