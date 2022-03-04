@@ -5,11 +5,13 @@ class Card {
 	cost: number;
 	id: number;
 	abilities: Ability[]
-	constructor(name: string, cost: number, id: number, abilities: Ability[]) {
+	src: string;
+	constructor(name: string, cost: number, id: number, abilities: Ability[], src: string) {
 		this.name = name;
 		this.cost = cost;
 		this.id = id;
 		this.abilities = abilities;
+		this.src = src;
 	}
 	getCost(): number {
 		return this.cost;
@@ -35,6 +37,9 @@ class Card {
 			}
 		}
 		return null;
+	}
+	getSrc(): string {
+		return this.src;
 	}
 	
 }
