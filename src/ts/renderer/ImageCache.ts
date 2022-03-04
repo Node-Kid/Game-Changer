@@ -6,10 +6,13 @@ class ImageCache extends System {
 		super("ImageCache");
 		this.cachedImages = [];
 	}
-	cacheImage(imageSrc: string): void {
+	cacheImage(imageSrc: string, callback: Function) {
 		const image = new Image();
 		image.setAttribute("src", imageSrc);
-		this.cachedImages.push(image);
+		image.onload = () => {
+			this.cachedImages.push(image);
+			callback();
+		}
 	}
 	getImage(imageSrc: string): HTMLImageElement | null {
 		for(const image of this.cachedImages) {
