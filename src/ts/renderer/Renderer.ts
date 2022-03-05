@@ -17,7 +17,6 @@ class Renderer extends System {
 		this.canvas.width = window.innerWidth;
 		this.canvas.height = window.innerHeight;
 		this.renderer.translate(this.canvas.width / 2, this.canvas.height / 2);
-		window.addEventListener("resize", () => this.renderer.translate(this.canvas.width / 2, this.canvas.height / 2));
 	}
 	setCanvas(canvas: HTMLCanvasElement): void {
 		this.canvas = canvas;
@@ -29,7 +28,13 @@ class Renderer extends System {
 	}
 	drawCard(root: Root, card: Card, x: number, y: number) {
 		const image = root.ImageCache.getImage(card.getSrc()) as HTMLImageElement;
-		this.renderer.drawImage(image, x, y, 72, 100);
+		this.renderer.translate(-72, -100);
+		this.renderer.drawImage(image, x, y, 144, 200);
+		this.renderer.translate(72, 100);
+	}
+	drawBackground() {
+		this.renderer.fillStyle = "#E5E7E6";
+		this.renderer.fillRect(-(this.canvas.width / 2), -(this.canvas.height / 2), this.canvas.width, this.canvas.height);
 	}
 }
 export {Renderer}
