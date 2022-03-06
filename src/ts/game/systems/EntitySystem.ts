@@ -1,4 +1,4 @@
-import { Card } from "../core/card";
+import { Card } from "../core/Card";
 import { System } from "../core/System";
 
 class EntitySystem extends System {

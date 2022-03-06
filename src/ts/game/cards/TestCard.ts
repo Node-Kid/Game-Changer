@@ -1,4 +1,4 @@
-import { Card } from "../core/card";
+import { Card } from "../core/Card";
 import url from "../../../../images/cards/test_card.jpg";
 class TestCard extends Card {
 	constructor() {

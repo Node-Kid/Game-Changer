@@ -1,6 +1,6 @@
-import { Card } from "../game/core/card";
+import { Card } from "../game/core/Card";
 import { System } from "../game/core/System";
-import { Root } from "../root";
+import { Root } from "../Root";
 class Renderer extends System {
 	renderer: CanvasRenderingContext2D;
 	canvas: HTMLCanvasElement;

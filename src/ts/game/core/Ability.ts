@@ -1,4 +1,4 @@
-import { Card } from "./card";
+import { Card } from "./Card";
 class Ability {
 	name: string;
 	constructor(name: string) {
