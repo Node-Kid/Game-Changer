@@ -1,6 +1,6 @@
 import { EntitySystem } from "./game/systems/EntitySystem";
 import { ImageCache } from "./renderer/ImageCache";
-import { Renderer } from "./renderer/renderer";
+import { Renderer } from "./renderer/Renderer";
 class Root {
 	EntitySystem: EntitySystem;
 	ImageCache: ImageCache;
