@@ -1,4 +1,5 @@
 import { Ability } from "./Ability";
+import { GameEvent } from "./GameEvent";
 
 class Card {
 	name: string;
@@ -41,9 +42,13 @@ class Card {
 	getSrc(): string {
 		return this.src;
 	}
-	onDeath() {}
-	onEnterBattlefield() {}
-	trigger() {}
-	destroy() {}
+	//@ts-ignore
+	onDeath(event: GameEvent) {}
+	//@ts-ignore
+	onEnterBattlefield(event: GameEvent) {}
+	//@ts-ignore
+	trigger(event: GameEvent) {}
+	//@ts-ignore
+	destroy(event: GameEvent) {}
 }
 export {Card}

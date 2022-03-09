@@ -1,3 +1,5 @@
+import { GameEvent } from "./GameEvent";
+
 class Modifier {
 	name: string;
 	xModifier?: Modifier;
@@ -7,9 +9,9 @@ class Modifier {
 	getName(): string {
 		return this.name;
 	}
-	trigger() {
+	trigger(data: GameEvent) {
 		if(this.xModifier != undefined) {
-			this.xModifier.trigger();
+			this.xModifier.trigger(data);
 		}
 	}
 	setXModifier(x: Modifier) {

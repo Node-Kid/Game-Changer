@@ -1,4 +1,5 @@
 import { Card } from "./Card";
+import { GameEvent } from "./GameEvent";
 import { Modifier } from "./Modifier";
 class Ability {
 	name: string;
@@ -15,8 +16,8 @@ class Ability {
 	getXAbility(): Modifier | undefined {
 		return this.x;
 	}
-	trigger() {}
-	clear() {}
+	//@ts-ignore
+	trigger(data: GameEvent) {}
 	//@ts-ignore
 	copyAbilityTo(otherCard: Card) {}
 }

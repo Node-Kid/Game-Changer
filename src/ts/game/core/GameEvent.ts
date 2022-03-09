@@ -1,10 +1,17 @@
+import { Root } from "../../Root";
+import { EventPayload } from "../events/EventPayload";
+
 class GameEvent {
 	name: string;
 	resolved: boolean;
-	data: object;
-	constructor(name: string, data: object) {
+	data?: EventPayload;
+	child?: GameEvent;
+	constructor(name: string, data?: EventPayload) {
 		this.name = name;
 		this.resolved = false;
+		this.data = data;
+	}
+	setData(data: EventPayload) {
 		this.data = data;
 	}
 	getName(): string {
@@ -13,11 +20,23 @@ class GameEvent {
 	getResolved(): boolean {
 		return this.resolved;
 	}
-	getData(): object {
+	getData(): EventPayload | undefined {
 		return this.data;
 	}
-	resolve() {
-		this.resolved = true;
+	setChild(event: GameEvent) {
+		this.child = event;
+	}
+	getChild(): GameEvent | undefined{
+		return this.child;
+	}
+	//@ts-ignore --hehe
+	resolve(root?: Root): boolean{
+		if(this.getChild() && this.getChild()?.getResolved()) {
+			this.resolved = true;
+		} else {
+			return this,this.resolved = true;
+		}
+		return this.resolved;
 	}
 
 }
