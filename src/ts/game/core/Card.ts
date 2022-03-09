@@ -41,6 +41,9 @@ class Card {
 	getSrc(): string {
 		return this.src;
 	}
-	
+	onDeath() {}
+	onEnterBattlefield() {}
+	trigger() {}
+	destroy() {}
 }
 export {Card}

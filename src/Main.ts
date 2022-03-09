@@ -10,6 +10,6 @@ GameRoot.ImageCache.cacheImage(testCardUrl, () => {
 	GameRoot.Renderer.drawBackground();
 	GameRoot.Renderer.drawCard(GameRoot, testCard, 0, 250);
 	testCard.getAbility("OnDeath")?.setXAbility(new Draw());
-	testCard.getAbility("OnDeath")?.trigger();
+	testCard.destroy();
 	console.log(testCard);
 });

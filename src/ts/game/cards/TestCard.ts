@@ -5,5 +5,11 @@ class TestCard extends Card {
 	constructor() {
 		super("Test Card", 1, 0x0001, [new OnDeath()], url);
 	}
+	onDeath() {
+		this.getAbility("OnDeath")?.trigger();
+	}
+	destroy() {
+		this.onDeath();
+	}
 }
 export {TestCard};
