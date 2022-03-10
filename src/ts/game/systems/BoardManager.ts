@@ -11,7 +11,7 @@ class BoardManager extends System {
 		super("BoardManager");
 		this.playableObjects = [];
 	}
-	addCardToBoard(card: PlayableObject, root: Root, player: string) {//change player to actual player object soon
+	addCardToBoard(root: Root, card: PlayableObject, player: string) {//change player to actual player object soon
 		const payload = new EventPayload();
 		payload.card = card;
 		payload.player = player;
@@ -19,9 +19,15 @@ class BoardManager extends System {
 		root.EventSystem.fireEvent(event, (event: GameEvent) => {
 			if(event.getResolved()) {
 				this.playableObjects.push(card);
+				this.drawBoard(root);
 			}
 		});
-		
+	}
+	drawBoard(root: Root) {
+		let cardIterator = 0;
+		for (const card of this.playableObjects) {
+			cardIterator++;
+		}
 	}
 }
 export {BoardManager}
