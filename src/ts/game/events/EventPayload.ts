@@ -1,9 +1,9 @@
-import { Card } from "../core/Card"
+import { PlayableObject } from "../core/Types";
 
 class EventPayload {
-	card?: Card;
+	card?: PlayableObject;
 	player?: string; //need to change this later
-	target?: Card
+	target?: PlayableObject
 	extraData?: object;
 	constructor() {}
 	getRawData(): object {

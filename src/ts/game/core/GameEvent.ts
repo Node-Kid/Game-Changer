@@ -1,11 +1,13 @@
 import { Root } from "../../Root";
 import { EventPayload } from "../events/EventPayload";
+import { EventPromise } from "../events/EventPromise";
 
 class GameEvent {
 	name: string;
 	resolved: boolean;
 	data?: EventPayload;
 	child?: GameEvent;
+	promise?: EventPromise;
 	constructor(name: string, data?: EventPayload) {
 		this.name = name;
 		this.resolved = false;
@@ -33,12 +35,19 @@ class GameEvent {
 	resolve(root?: Root): boolean{
 		if(this.getChild() && this.getChild()?.getResolved()) {
 			this.resolved = true;
-		} else {
-			return this,this.resolved = true;
+		} else if(!this.getChild()){
+			this.resolved = true;
 		}
+		if(this.resolved)
+			this.promise?.resolve();
 		return this.resolved;
 	}
-
+	setEventPromise(promise: EventPromise) {
+		this.promise = promise;
+	}
+	getEventPromise(): EventPromise | undefined {
+		return this.promise;
+	}
 }
 
 export {GameEvent}

@@ -21,5 +21,3 @@ payload.card = new TestCard();
 payload.player = "Admin";
 const cardPlayed = new CardPlayed(payload);
 GameRoot.EventSystem.fireEvent(cardPlayed);
-console.log(GameRoot.EventSystem);
-console.log(GameRoot.EventSystem.resolveOne());
