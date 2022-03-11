@@ -1,23 +1,14 @@
 import { TestCard } from "./ts/game/cards/TestCard";
 import { Root } from "./ts/Root";
 import testCardUrl from "../images/cards/test_card.jpg";
-import { CardPlayed } from "./ts/game/events/CardPlayed";
-import { EventPayload } from "./ts/game/events/EventPayload";
-import { OnEnter } from "./ts/game/abilities/OnEnter";
 const canvas = document.getElementById("gameView") as HTMLCanvasElement;
 const GameRoot = new Root();
 const testCard = new TestCard();
+const secondCard = new TestCard();
 GameRoot.Renderer.setCanvas(canvas);
 GameRoot.ImageCache.cacheImage(testCardUrl, () => {
 	GameRoot.Renderer.drawBackground();
-	GameRoot.Renderer.drawCard(GameRoot, testCard, 0, 250);
+	GameRoot.BoardManager.addCardToBoard(GameRoot, testCard, "Admin");
+	GameRoot.BoardManager.addCardToBoard(GameRoot, secondCard, "Admin");
+	GameRoot.BoardManager.addCardToBoard(GameRoot, new TestCard(), "Admin");
 });
-const listenerCard = new TestCard();
-const onEnter = new OnEnter();
-listenerCard.addAbility(onEnter);
-GameRoot.EventSystem.addListener(onEnter);
-const payload = new EventPayload();
-payload.card = new TestCard();
-payload.player = "Admin";
-const cardPlayed = new CardPlayed(payload);
-GameRoot.EventSystem.fireEvent(cardPlayed);
