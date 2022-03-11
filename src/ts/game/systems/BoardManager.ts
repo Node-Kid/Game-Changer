@@ -1,6 +1,7 @@
 import { Root } from "../../Root";
 import { Card } from "../core/Card";
 import { GameEvent } from "../core/GameEvent";
+import { Modifier } from "../core/Modifier";
 import { System } from "../core/System";
 import { CardPlayed } from "../events/CardPlayed";
 import { EventPayload } from "../events/EventPayload";
@@ -34,6 +35,9 @@ class BoardManager extends System {
 			cardIterator++;
 		}
 		root.Renderer.translate((positionFactor * (this.cards.length - 1) / 2), 0);
+	}
+	addModifierToBoard(root: Root, modifier: Modifier, player: string) {
+		//TODO
 	}
 }
 export {BoardManager}

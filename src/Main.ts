@@ -9,6 +9,4 @@ GameRoot.Renderer.setCanvas(canvas);
 GameRoot.ImageCache.cacheImage(testCardUrl, () => {
 	GameRoot.Renderer.drawBackground();
 	GameRoot.BoardManager.addCardToBoard(GameRoot, testCard, "Admin");
-	GameRoot.BoardManager.addCardToBoard(GameRoot, secondCard, "Admin");
-	GameRoot.BoardManager.addCardToBoard(GameRoot, new TestCard(), "Admin");
 });
