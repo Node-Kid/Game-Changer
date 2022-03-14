@@ -36,8 +36,17 @@ class BoardManager extends System {
 		}
 		root.Renderer.translate((positionFactor * (this.cards.length - 1) / 2), 0);
 	}
-	addModifierToBoard(root: Root, modifier: Modifier, player: string) {
-		//TODO
+	addModifierToBoard(root: Root, modifier: Modifier, target: Card, abilityName: string, player: string) {
+		const payLoad = new EventPayload();
+		payLoad.card = modifier;
+		payLoad.player = player;
+		payLoad.target = target;
+		const event = new CardPlayed(payLoad);
+		root.EventSystem.fireEvent(event, (event: GameEvent) => {
+			if(event.getResolved()) {
+				target.getAbility(abilityName)?.setXAbility(modifier);
+			}
+		});
 	}
 }
 export {BoardManager}
