@@ -32,6 +32,11 @@ class BoardManager extends System {
 		for (const card of this.cards) {
 			let xPosition = cardIterator * positionFactor;
 			root.Renderer.drawCard(root, card, xPosition, 250);
+			if(card.getModifiers()) {
+				for (const modifier of card.getModifiers()) {
+					//TODO: Draw modifiers offset from card and add function in renderer
+				}
+			}
 			cardIterator++;
 		}
 		root.Renderer.translate((positionFactor * (this.cards.length - 1) / 2), 0);
@@ -45,6 +50,7 @@ class BoardManager extends System {
 		root.EventSystem.fireEvent(event, (event: GameEvent) => {
 			if(event.getResolved()) {
 				target.getAbility(abilityName)?.setXAbility(modifier);
+				this.drawBoard(root);
 			}
 		});
 	}

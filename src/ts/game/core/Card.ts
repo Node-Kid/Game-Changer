@@ -1,5 +1,6 @@
 import { Ability } from "./Ability";
 import { GameEvent } from "./GameEvent";
+import { Modifier } from "./Modifier";
 
 class Card {
 	name: string;
@@ -17,19 +18,26 @@ class Card {
 	getCost(): number {
 		return this.cost;
 	}
-	setCost(newCost: number): void {
+	setCost(newCost: number) {
 		this.cost = newCost;
 	}
-	addAbility(newAbility: Ability): void {
+	addAbility(newAbility: Ability) {
 		this.abilities.push(newAbility);
 	}
-	removeAbility(ability: Ability): void {
-		const index = this.abilities.indexOf(ability, 0);
-		if(index > -1) this.abilities.splice(index, 1);
+	removeAbility(abilityName: string) {
+		for(const ability of this.abilities) {
+			if(ability.getName() == abilityName) {
+				this.abilities.splice(this.abilities.indexOf(ability), 1);
+			}
+		}
 	}
-	hasAbility(ability: Ability): boolean {
-		const index = this.abilities.indexOf(ability, 0);
-		return (index > -1) ? true : false;
+	hasAbility(abilityName: string): boolean {
+		for(const ability of this.abilities) {
+			if(ability.getName() == abilityName) {
+				return true;
+			}
+		}
+		return false;
 	}
 	getAbility(abilityName: string){
 		for(const ability of this.abilities) {
@@ -38,6 +46,18 @@ class Card {
 			}
 		}
 		return null;
+	}
+	getModifiers(): (Modifier | undefined)[]  {
+		let modifiers = []
+		for(const ability of this.abilities) {
+			if(ability.getXAbility()) {
+				modifiers.push(ability.getXAbility());
+			}
+		}
+		return modifiers;
+	}
+	getAbilities(): Ability[] {
+		return this.abilities;
 	}
 	getSrc(): string {
 		return this.src;

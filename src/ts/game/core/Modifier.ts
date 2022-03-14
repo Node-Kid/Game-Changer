@@ -3,11 +3,16 @@ import { GameEvent } from "./GameEvent";
 class Modifier {
 	name: string;
 	xModifier?: Modifier;
-	constructor(name: string) {
+	src: string;
+	constructor(name: string, src: string) {
 		this.name = name;
+		this.src = src;
 	}
 	getName(): string {
 		return this.name;
+	}
+	getSrc(): string {
+		return this.src;
 	}
 	trigger(data: GameEvent) {
 		if(this.xModifier != undefined) {
