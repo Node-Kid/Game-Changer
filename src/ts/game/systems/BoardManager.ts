@@ -3,7 +3,7 @@ import { Card } from "../core/Card";
 import { GameEvent } from "../core/GameEvent";
 import { Modifier } from "../core/Modifier";
 import { System } from "../core/System";
-import { CardPlayed } from "../events/CardPlayed";
+import { CardPlayed } from "../events/CardPlayedEvent";
 import { EventPayload } from "../events/EventPayload";
 
 class BoardManager extends System {

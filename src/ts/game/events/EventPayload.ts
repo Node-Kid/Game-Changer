@@ -1,5 +1,7 @@
-import { PlayableObject } from "../core/Types";
+import { Card } from "../core/Card";
+import { Modifier } from "../core/Modifier";
 
+type PlayableObject = Modifier | Card;
 class EventPayload {
 	card?: PlayableObject;
 	player?: string; //need to change this later
