@@ -1,4 +1,3 @@
-
 import { Ability } from "../core/Ability";
 import { GameEvent } from "../core/GameEvent";
 import { Modifier } from "../core/Modifier";

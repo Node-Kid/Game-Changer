@@ -16,9 +16,9 @@ class Ability {
 	getXAbility(): Modifier | undefined {
 		return this.x;
 	}
-	//@ts-ignore
+	
 	trigger(data: GameEvent) {}
-	//@ts-ignore
+
 	copyAbilityTo(otherCard: Card) {}
 }
 export {Ability}
