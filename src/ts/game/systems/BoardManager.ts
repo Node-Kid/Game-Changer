@@ -3,7 +3,7 @@ import { Card } from "../core/Card";
 import { GameEvent } from "../core/GameEvent";
 import { Modifier } from "../core/Modifier";
 import { System } from "../core/System";
-import { CardPlayed } from "../events/CardPlayedEvent";
+import { CardPlayedEvent } from "../events/CardPlayedEvent";
 import { EventPayload } from "../events/EventPayload";
 
 class BoardManager extends System {
@@ -16,7 +16,7 @@ class BoardManager extends System {
 		const payload = new EventPayload();
 		payload.card = card;
 		payload.player = player;
-		const event = new CardPlayed(payload);
+		const event = new CardPlayedEvent(payload);
 		root.EventSystem.fireEvent(event, (event: GameEvent) => {
 			if(event.getResolved()) {
 				this.cards.push(card);
@@ -46,7 +46,7 @@ class BoardManager extends System {
 		payLoad.card = modifier;
 		payLoad.player = player;
 		payLoad.target = target;
-		const event = new CardPlayed(payLoad);
+		const event = new CardPlayedEvent(payLoad);
 		root.EventSystem.fireEvent(event, (event: GameEvent) => {
 			if(event.getResolved()) {
 				target.getAbility(abilityName)?.setXAbility(modifier);

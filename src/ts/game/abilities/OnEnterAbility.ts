@@ -2,7 +2,7 @@ import { Ability } from "../core/Ability";
 import { GameEvent } from "../core/GameEvent";
 import { Modifier } from "../core/Modifier";
 import { NullTypes } from "../core/Types";
-import { CardPlayed } from "../events/CardPlayedEvent";
+import { CardPlayedEvent } from "../events/CardPlayedEvent";
 
 class OnEnter extends Ability {
 	constructor() {
@@ -13,7 +13,7 @@ class OnEnter extends Ability {
 		return "When a lifeform enters the battlefield, do (X)";
 	}
 	trigger(data: GameEvent) {
-		if(data instanceof CardPlayed) {
+		if(data instanceof CardPlayedEvent) {
 			if(this.x?.getName() != NullTypes.NULL_MODIFIER) {
 				this.x?.trigger(data);
 			}

@@ -1,3 +1,4 @@
+import { GameEvent } from "../core/GameEvent";
 import { Modifier } from "../core/Modifier";
 import { NullTypes } from "../core/Types";
 
@@ -5,8 +6,8 @@ class Draw extends Modifier {
 	constructor(){
 		super("Draw", NullTypes.NULL_URL);
 	}
-	trigger() {
-		console.log('Draw Card!!');
+	trigger(data: GameEvent) {
+		console.log(data);
 	}
 	setXModifier() {}
 	getXModifier(): undefined {return undefined}
