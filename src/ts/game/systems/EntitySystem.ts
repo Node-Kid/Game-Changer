@@ -23,7 +23,7 @@ class EntitySystem extends System {
 		}
 	}
 	getAllCardsOfType(cardType: string): Card[] {
-		let cards = [];
+		let cards: Card[] = [];
 		for(const currentCard of this.cardList) {
 			if(typeof currentCard === cardType) {
 				cards.push(currentCard);

@@ -1,6 +1,7 @@
 import { Card } from "../game/core/Card";
 import { System } from "../game/core/System";
 import { Root } from "../Root";
+import { RenderConstants } from "../utils/Constants";
 class Renderer extends System {
 	renderer: CanvasRenderingContext2D;
 	canvas: HTMLCanvasElement;
@@ -31,14 +32,12 @@ class Renderer extends System {
 	}
 	drawCard(root: Root, card: Card, x: number, y: number) {
 		const image = root.ImageCache.getImage(card.getSrc()) as HTMLImageElement;
-		this.renderer.translate(-72, -100);
-		this.currentTranslation = [this.currentTranslation[0] + -72, this.currentTranslation[1] + -100];
-		this.renderer.drawImage(image, x, y, 144, 200);
-		this.renderer.translate(72, 100);
-		this.currentTranslation = [this.currentTranslation[0] + 72, this.currentTranslation[1] + 100];
+		this.translate(-RenderConstants.CARD_WIDTH / 2, -RenderConstants.CARD_HEIGHT / 2);
+		this.renderer.drawImage(image, x, y, RenderConstants.CARD_WIDTH, RenderConstants.CARD_HEIGHT);
+		this.translate(RenderConstants.CARD_WIDTH / 2, RenderConstants.CARD_HEIGHT / 2);
 	}
 	drawBackground() {
-		this.renderer.fillStyle = "#E5E7E6";
+		this.renderer.fillStyle = RenderConstants.BACKGROUND_COLOR;
 		this.renderer.fillRect(-(this.canvas.width / 2), -(this.canvas.height / 2), this.canvas.width, this.canvas.height);
 	}
 	getTranslation(): number[] {

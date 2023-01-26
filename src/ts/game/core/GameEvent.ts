@@ -31,7 +31,7 @@ class GameEvent {
 	getChild(): GameEvent | undefined{
 		return this.child;
 	}
-	//@ts-ignore --hehe
+	
 	resolve(root?: Root): boolean{
 		if(this.getChild() && this.getChild()?.getResolved()) {
 			this.resolved = true;

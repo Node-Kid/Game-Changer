@@ -48,7 +48,7 @@ class Card {
 		return null;
 	}
 	getModifiers(): (Modifier | undefined)[]  {
-		let modifiers = []
+		let modifiers: (Modifier | undefined)[] = []
 		for(const ability of this.abilities) {
 			if(ability.getXAbility()) {
 				modifiers.push(ability.getXAbility());
@@ -62,13 +62,12 @@ class Card {
 	getSrc(): string {
 		return this.src;
 	}
-	//@ts-ignore
 	onDeath(event: GameEvent) {}
-	//@ts-ignore
+
 	onEnterBattlefield(event: GameEvent) {}
-	//@ts-ignore
+
 	trigger(event: GameEvent) {}
-	//@ts-ignore
+	
 	destroy(event: GameEvent) {}
 }
 export {Card}
