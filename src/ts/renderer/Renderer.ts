@@ -12,7 +12,7 @@ class Renderer extends System {
 		this.canvas.width = window.innerWidth;
 		this.canvas.height = window.innerHeight;
 		this.currentTranslation = [0, 0]
-		this.renderer = this.canvas.getContext("2d") as CanvasRenderingContext2D;
+		this.renderer = this.canvas.getContext("2d");
 		this.intializeCanvas(this.canvas);
 	}
 	intializeCanvas(canvas: HTMLCanvasElement) {
@@ -25,14 +25,14 @@ class Renderer extends System {
 	}
 	setCanvas(canvas: HTMLCanvasElement): void {
 		this.canvas = canvas;
-		this.renderer = this.canvas.getContext("2d") as CanvasRenderingContext2D;
+		this.renderer = this.canvas.getContext("2d");
 		this.intializeCanvas(canvas);
 	}
 	getCanvas(): HTMLCanvasElement {
 		return this.canvas;
 	}
 	drawCard(root: Root, card: Card, x: number, y: number) {
-		const image = root.ImageCache.getImage(card.getSrc()) as HTMLImageElement;
+		const image = root.ImageCache.getImage(card.getSrc());
 		this.translate(-RenderConstants.CARD_WIDTH / 2, -RenderConstants.CARD_HEIGHT / 2);
 		console.log(this.currentTranslation);
 		this.renderer.drawImage(image, x, y, RenderConstants.CARD_WIDTH, RenderConstants.CARD_HEIGHT);

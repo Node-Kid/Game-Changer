@@ -32,10 +32,8 @@ class GameEvent {
 		return this.child;
 	}
 	
-	resolve(root?: Root): boolean{
-		if(this.getChild() && this.getChild()?.getResolved()) {
-			this.resolved = true;
-		} else if(!this.getChild()){
+	resolve(): boolean{
+		if((this.getChild() && this.getChild()?.getResolved()) || !this.getChild()) {
 			this.resolved = true;
 		}
 		if(this.resolved)

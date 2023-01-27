@@ -17,8 +17,12 @@ class Ability {
 		return this.x;
 	}
 	
-	trigger(data: GameEvent) {}
+	trigger(data: GameEvent) {
+		//blank for overiding
+	}
 
-	copyAbilityTo(otherCard: Card) {}
+	copyAbilityTo(otherCard: Card) {
+		//blank for overiding
+	}
 }
 export {Ability}

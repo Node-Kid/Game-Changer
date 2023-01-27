@@ -74,12 +74,20 @@ class Card {
 	getPos(): {} {
 		return this.pos;
 	}
-	onDeath(event: GameEvent) {}
+	onDeath(event: GameEvent) {
+		//blank for overiding
+	} 
 
-	onEnterBattlefield(event: GameEvent) {}
+	onEnterBattlefield(event: GameEvent) {
+		//blank for overiding
+	}
 
-	trigger(event: GameEvent) {}
+	trigger(event: GameEvent) {
+		//blank for overiding
+	}
 	
-	destroy(event: GameEvent) {}
+	destroy(event: GameEvent) {
+		//blank for overiding
+	}
 }
 export {Card}

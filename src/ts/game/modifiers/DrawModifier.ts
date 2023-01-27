@@ -9,7 +9,9 @@ class Draw extends Modifier {
 	trigger(data: GameEvent) {
 		console.log(data);
 	}
-	setXModifier() {}
+	setXModifier() {
+		//blank for overiding
+	}
 	getXModifier(): undefined {return undefined}
 }
 export {Draw}
