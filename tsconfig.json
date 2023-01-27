@@ -1,0 +1,6 @@
+{
+    "include": [
+        "src/",
+        "images/cards/include.d.ts"
+    ]
+}
