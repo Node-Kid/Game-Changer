@@ -20,7 +20,8 @@ class Renderer extends System {
 		this.canvas.width = window.innerWidth;
 		this.canvas.height = window.innerHeight;
 		this.renderer.translate(this.canvas.width / 2, this.canvas.height / 2);
-		this.currentTranslation = [this.currentTranslation[0] + this.canvas.width / 2, this.currentTranslation[1] + this.canvas.height / 2];
+		this.currentTranslation = [this.currentTranslation[0] + (this.canvas.width / 2), this.currentTranslation[1] + (this.canvas.height / 2)];
+
 	}
 	setCanvas(canvas: HTMLCanvasElement): void {
 		this.canvas = canvas;
@@ -33,6 +34,7 @@ class Renderer extends System {
 	drawCard(root: Root, card: Card, x: number, y: number) {
 		const image = root.ImageCache.getImage(card.getSrc()) as HTMLImageElement;
 		this.translate(-RenderConstants.CARD_WIDTH / 2, -RenderConstants.CARD_HEIGHT / 2);
+		console.log(this.currentTranslation);
 		this.renderer.drawImage(image, x, y, RenderConstants.CARD_WIDTH, RenderConstants.CARD_HEIGHT);
 		this.translate(RenderConstants.CARD_WIDTH / 2, RenderConstants.CARD_HEIGHT / 2);
 	}

@@ -6,14 +6,16 @@ import { CardDiedEvent } from "./ts/game/events/CardDiedEvent";
 import { EventPayload } from "./ts/game/events/EventPayload";
 const canvas = document.getElementById("gameView") as HTMLCanvasElement;
 const GameRoot = new Root();
-const testCard = new TestCard();
+const testCard1 = new TestCard();
+const testCard2 = new TestCard();
 GameRoot.Renderer.setCanvas(canvas);
 GameRoot.ImageCache.cacheImage(testCardUrl, () => {
 	GameRoot.Renderer.drawBackground();
-	GameRoot.BoardManager.addCardToBoard(GameRoot, testCard, "Admin");
-	testCard.getAbility("OnDeath")?.setXAbility(new Draw());
+	GameRoot.BoardManager.addCardToBoard(GameRoot, testCard1, "Admin");
+	GameRoot.BoardManager.addCardToBoard(GameRoot, testCard2, "Nerd");
+	testCard1.getAbility("OnDeath")?.setXAbility(new Draw());
 	const payload = new EventPayload();
 	payload.player = "Nerd";
-	payload.target = testCard;
-	testCard.destroy(new CardDiedEvent(payload))
+	payload.target = testCard1;
+	testCard1.destroy(new CardDiedEvent(payload))
 });

@@ -27,11 +27,12 @@ class BoardManager extends System {
 	drawBoard(root: Root) {
 		root.Renderer.drawBackground();
 		let cardIterator = 0;
-		const positionFactor = (root.Renderer.getCanvas().width / 2) / (this.cards.length + 1);
+		const positionFactor = (root.Renderer.getCanvas().width) / (this.cards.length + 1);
 		root.Renderer.translate(-(positionFactor * (this.cards.length - 1) / 2), 0);
 		for (const card of this.cards) {
 			let xPosition = cardIterator * positionFactor;
 			root.Renderer.drawCard(root, card, xPosition, 250);
+			card.setPos(xPosition + positionFactor, 250);
 			if(card.getModifiers()) {
 				for (const modifier of card.getModifiers()) {
 					//TODO: Draw modifiers offset from card and add function in renderer
