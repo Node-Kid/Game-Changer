@@ -1,4 +1,3 @@
-import { Root } from "../../Root";
 import { EventPayload } from "../events/EventPayload";
 import { EventPromise } from "../events/EventPromise";
 

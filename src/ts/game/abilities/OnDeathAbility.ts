@@ -2,6 +2,7 @@ import { Ability } from "../core/Ability";
 import { GameEvent } from "../core/GameEvent";
 import { Modifier } from "../core/Modifier";
 import { NullTypes } from "../core/Types";
+import { CardDiedEvent } from "../events/CardDiedEvent";
 
 class OnDeath extends Ability {
 	constructor() {
@@ -12,8 +13,10 @@ class OnDeath extends Ability {
 		return "When this lifeform dies, do (X)";
 	}
 	trigger(data: GameEvent) {
-		if(this.x?.getName() != NullTypes.NULL_MODIFIER) {
-			this.x?.trigger(data);
+		if(data instanceof CardDiedEvent) {
+			if(this.x?.getName() != NullTypes.NULL_MODIFIER) {
+				this.x?.trigger(data);
+			}
 		}
 	}
 }

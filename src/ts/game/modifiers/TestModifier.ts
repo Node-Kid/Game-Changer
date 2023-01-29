@@ -1,10 +1,9 @@
 import { GameEvent } from "../core/GameEvent";
 import { Modifier } from "../core/Modifier";
-import { NullTypes } from "../core/Types";
-
-class Draw extends Modifier {
-	constructor(){
-		super("Draw", NullTypes.NULL_URL);
+import url from "../../../../images/modifiers/test_modifier.jpg";
+class TestModifier extends Modifier {
+    constructor(){
+		super("TestModifier", url);
 	}
 	trigger(data: GameEvent) {
 		console.log(data);
@@ -14,4 +13,4 @@ class Draw extends Modifier {
 	}
 	getXModifier(): undefined {return undefined}
 }
-export {Draw}
+export {TestModifier}

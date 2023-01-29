@@ -1,6 +1,7 @@
 {
     "include": [
         "src/",
-        "images/cards/include.d.ts"
+        "images/cards/include.d.ts",
+        "images/modifiers/includ.d.ts"
     ]
 }

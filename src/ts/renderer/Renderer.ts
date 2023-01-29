@@ -1,4 +1,5 @@
 import { Card } from "../game/core/Card";
+import { Modifier } from "../game/core/Modifier";
 import { System } from "../game/core/System";
 import { Root } from "../Root";
 import { RenderConstants } from "../utils/Constants";
@@ -34,7 +35,12 @@ class Renderer extends System {
 	drawCard(root: Root, card: Card, x: number, y: number) {
 		const image = root.ImageCache.getImage(card.getSrc());
 		this.translate(-RenderConstants.CARD_WIDTH / 2, -RenderConstants.CARD_HEIGHT / 2);
-		console.log(this.currentTranslation);
+		this.renderer.drawImage(image, x, y, RenderConstants.CARD_WIDTH, RenderConstants.CARD_HEIGHT);
+		this.translate(RenderConstants.CARD_WIDTH / 2, RenderConstants.CARD_HEIGHT / 2);
+	}
+	drawModifier(root: Root, modifier: Modifier, x: number, y: number) {
+		const image = root.ImageCache.getImage(modifier.getSrc());
+		this.translate(-RenderConstants.CARD_WIDTH / 2, -RenderConstants.CARD_HEIGHT / 2);
 		this.renderer.drawImage(image, x, y, RenderConstants.CARD_WIDTH, RenderConstants.CARD_HEIGHT);
 		this.translate(RenderConstants.CARD_WIDTH / 2, RenderConstants.CARD_HEIGHT / 2);
 	}
