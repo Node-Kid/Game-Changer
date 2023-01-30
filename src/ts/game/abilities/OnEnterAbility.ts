@@ -7,7 +7,7 @@ import { CardPlayedEvent } from "../events/CardPlayedEvent";
 class OnEnter extends Ability {
 	constructor() {
 		super("OnEnter");
-		this.x = new Modifier(NullTypes.NULL_MODIFIER, NullTypes.NULL_URL);
+		this.x = new Modifier(NullTypes.NULL_MODIFIER, NullTypes.NULL_URL, 0);
 	}
 	getDisplayText(): string {
 		return "When a lifeform enters the battlefield, do (X)";

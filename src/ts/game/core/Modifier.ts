@@ -1,18 +1,12 @@
 import { GameEvent } from "./GameEvent";
+import { PlayableObject } from "./PlayableObject";
 
-class Modifier {
-	name: string;
+class Modifier extends PlayableObject{
 	xModifier?: Modifier;
-	src: string;
-	constructor(name: string, src: string) {
+	constructor(name: string, src: string, cost: number) {
+		super(name, src, {X: 0, Y: 0, ZIndex: 0}, cost);
 		this.name = name;
 		this.src = src;
-	}
-	getName(): string {
-		return this.name;
-	}
-	getSrc(): string {
-		return this.src;
 	}
 	trigger(data: GameEvent) {
 		if(this.xModifier != undefined) {

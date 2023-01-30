@@ -6,6 +6,7 @@ enum NullTypes {
     NULL_URL = "NULL_URL",
     NULL_MODIFIER = "NULL_MODIFIER"
 }
-type Listener = Ability | Modifier
+type Listener = Ability | Modifier | Card
 type PlayableObject = Modifier | Card;
-export {Listener, PlayableObject, NullTypes}
+type Pos2D = {X: number, Y: number, ZIndex: number}
+export {Listener, PlayableObject, NullTypes, Pos2D}

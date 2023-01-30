@@ -7,7 +7,7 @@ import { CardDiedEvent } from "../events/CardDiedEvent";
 class OnDeath extends Ability {
 	constructor() {
 		super("OnDeath");
-		this.x = new Modifier(NullTypes.NULL_MODIFIER, NullTypes.NULL_URL);
+		this.x = new Modifier(NullTypes.NULL_MODIFIER, NullTypes.NULL_URL, 0);
 	}
 	getDisplayText(): string {
 		return "When this lifeform dies, do (X)";

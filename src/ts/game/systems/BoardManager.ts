@@ -7,6 +7,7 @@ import { System } from "../core/System";
 import { NullTypes } from "../core/Types";
 import { CardPlayedEvent } from "../events/CardPlayedEvent";
 import { EventPayload } from "../events/EventPayload";
+import { ModifierPlayedEvent } from "../events/ModifierPlayedEvent";
 
 class BoardManager extends System {
 	cards: Card[];
@@ -22,6 +23,7 @@ class BoardManager extends System {
 		root.EventSystem.fireEvent(event, (event: GameEvent) => {
 			if(event.getResolved()) {
 				this.cards.push(card);
+				root.EventSystem.addListener(card);
 				this.drawBoard(root);
 			}
 		});
@@ -31,11 +33,10 @@ class BoardManager extends System {
 		payLoad.card = modifier;
 		payLoad.player = player;
 		payLoad.target = target;
-		const event = new CardPlayedEvent(payLoad);
+		const event = new ModifierPlayedEvent(payLoad);
 		root.EventSystem.fireEvent(event, (event: GameEvent) => {
 			if(event.getResolved()) {
 				target.getAbility(abilityName)?.setXAbility(modifier);
-				console.log(modifier);
 				this.drawBoard(root);
 			}
 		});
@@ -48,17 +49,17 @@ class BoardManager extends System {
 		for (const card of this.cards) {
 			let xPosition = cardIterator * positionFactor;
 			if(card.getModifiers()) {
-				let modifierIterator = card.getModifiers.length;
+				let modifierIterator = card.getModifiers.length + 1;
 				for (const modifier of [...card.getModifiers()]	.reverse()) { // spread to create copy
-					console.log(card);
 					if(modifier.getSrc() != NullTypes.NULL_URL && modifier.getName() != NullTypes.NULL_MODIFIER) {
-						root.Renderer.drawModifier(root, modifier, xPosition + (modifierIterator * RenderConstants.CARD_WIDTH / 2), 250 + RenderConstants.CARD_HEIGHT / 2);
+						root.Renderer.drawModifier(root, modifier, xPosition + (modifierIterator * RenderConstants.CARD_WIDTH / 4), 250 + RenderConstants.CARD_HEIGHT / 4);
+						modifier.setPos(positionFactor +xPosition + (modifierIterator * RenderConstants.CARD_WIDTH / 4), 250 + RenderConstants.CARD_HEIGHT / 4, modifierIterator);
 					}
 					modifierIterator--;
 				}
 			}
 			root.Renderer.drawCard(root, card, xPosition, 250);
-			card.setPos(xPosition + positionFactor, 250);
+			card.setPos(xPosition + positionFactor, 250, 0);
 			cardIterator++;
 		}
 		root.Renderer.translate((positionFactor * (this.cards.length - 1) / 2), 0);

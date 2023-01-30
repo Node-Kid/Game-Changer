@@ -4,10 +4,10 @@ import { NullTypes } from "../core/Types";
 
 class Draw extends Modifier {
 	constructor(){
-		super("Draw", NullTypes.NULL_URL);
+		super("Draw", NullTypes.NULL_URL, 1);
 	}
 	trigger(data: GameEvent) {
-		console.log(data);
+		//do something in the future
 	}
 	setXModifier() {
 		//blank as this card does not have a modifier slot
