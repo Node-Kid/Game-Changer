@@ -1,7 +1,6 @@
 import { GameEvent } from "../core/GameEvent";
 import { System } from "../core/System";
 import type { Listener } from "../core/Types";
-import { CardDiedEvent } from "../events/CardDiedEvent";
 import { EventPromise } from "../events/EventPromise";
 
 class EventSystem extends System {
