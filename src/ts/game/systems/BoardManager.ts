@@ -3,6 +3,7 @@ import { RenderConstants } from "../../utils/Constants";
 import { Card } from "../core/Card";
 import { GameEvent } from "../core/GameEvent";
 import { Modifier } from "../core/Modifier";
+import { Player } from "../core/Player";
 import { System } from "../core/System";
 import { NullTypes } from "../core/Types";
 import { CardPlayedEvent } from "../events/CardPlayedEvent";
@@ -15,7 +16,7 @@ class BoardManager extends System {
 		super("BoardManager");
 		this.cards = [];
 	}
-	addCardToBoard(root: Root, card: Card, player: string) {//change player to actual player object soon
+	addCardToBoard(root: Root, card: Card, player: Player) {//change player to actual player object soon
 		const payload = new EventPayload();
 		payload.card = card;
 		payload.player = player;
@@ -28,7 +29,7 @@ class BoardManager extends System {
 			}
 		});
 	}
-	addModifierToBoard(root: Root, modifier: Modifier, target: Card, abilityName: string, player: string) {
+	addModifierToBoard(root: Root, modifier: Modifier, target: Card, abilityName: string, player: Player) {
 		const payLoad = new EventPayload();
 		payLoad.card = modifier;
 		payLoad.player = player;
