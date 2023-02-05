@@ -1,10 +1,11 @@
+import { Player } from "../core/Player";
 import {PlayableObject} from "../core/Types"
 class EventPayload {
 	card?: PlayableObject;
-	player?: string; //need to change this later
+	player?: Player; 
 	target?: PlayableObject
 	extraData?: object;
-	constructor(card?: PlayableObject, player?: string, target?: PlayableObject, extraData?: object) {
+	constructor(card?: PlayableObject, player?: Player, target?: PlayableObject, extraData?: object) {
 		this.card = card;
 		this.player = player;
 		this.target = target;
