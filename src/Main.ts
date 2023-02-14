@@ -23,6 +23,10 @@ GameRoot.ImageCache.cacheImage(testModifierUrl, () => {
 		GameRoot.EventSystem.addListener(testCard1);
 		GameRoot.BoardManager.addModifierToBoard(GameRoot, testModifier, testCard1, "OnDraw", adminPlayer);
 		const payload = new EventPayload();
-		GameRoot.EventSystem.fireEvent(new DrawEvent(payload))
+		GameRoot.EventSystem.fireEvent(new DrawEvent(payload), (event: GameEvent) => {
+			if(event.isResolved()) {
+				adminPlayer.addCardToHand(new TestCard());
+			}
+		});
 	});
 });

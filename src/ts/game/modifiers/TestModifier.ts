@@ -6,7 +6,7 @@ class TestModifier extends Modifier {
 		super("TestModifier", url, 1);
 	}
 	trigger(data: GameEvent) {
-		console.log("Test Modifier Triggered!");
+		
 	}
 	setXModifier() {
 		//blank as this card does not have a modifier slot

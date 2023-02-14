@@ -7,7 +7,7 @@ class EventPromise {
 		this.event = event;
 	}
 	whenResolved(callback: Function) {
-		if(!this.event.getResolved())
+		if(!this.event.isResolved())
 			this.callback = callback
 	}
 	resolve() {

@@ -8,5 +8,5 @@ enum NullTypes {
 }
 type Listener = Ability | Modifier | Card
 type PlayableObject = Modifier | Card;
-type Pos2D = {X: number, Y: number, ZIndex: number}
+interface Pos2D {X: number, Y: number, ZIndex: number}
 export {Listener, PlayableObject, NullTypes, Pos2D}

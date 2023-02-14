@@ -18,7 +18,7 @@ class GameEvent {
 	getName(): string {
 		return this.name;
 	}
-	getResolved(): boolean {
+	isResolved(): boolean {
 		return this.resolved;
 	}
 	getData(): EventPayload | undefined {
@@ -32,7 +32,7 @@ class GameEvent {
 	}
 	
 	resolve(): boolean{
-		if((this.getChild() && this.getChild()?.getResolved()) || !this.getChild()) {
+		if((this.getChild() && this.getChild()?.isResolved()) || !this.getChild()) {
 			this.resolved = true;
 		}
 		if(this.resolved)

@@ -16,13 +16,13 @@ class BoardManager extends System {
 		super("BoardManager");
 		this.cards = [];
 	}
-	addCardToBoard(root: Root, card: Card, player: Player) {//change player to actual player object soon
+	addCardToBoard(root: Root, card: Card, player: Player) {
 		const payload = new EventPayload();
 		payload.card = card;
 		payload.player = player;
 		const event = new CardPlayedEvent(payload);
 		root.EventSystem.fireEvent(event, (event: GameEvent) => {
-			if(event.getResolved()) {
+			if(event.isResolved()) {
 				this.cards.push(card);
 				root.EventSystem.addListener(card);
 				this.drawBoard(root);
@@ -36,7 +36,7 @@ class BoardManager extends System {
 		payLoad.target = target;
 		const event = new ModifierPlayedEvent(payLoad);
 		root.EventSystem.fireEvent(event, (event: GameEvent) => {
-			if(event.getResolved()) {
+			if(event.isResolved()) {
 				target.getAbility(abilityName)?.setXAbility(modifier);
 				this.drawBoard(root);
 			}
@@ -51,10 +51,10 @@ class BoardManager extends System {
 			let xPosition = cardIterator * positionFactor;
 			if(card.getModifiers()) {
 				let modifierIterator = card.getModifiers.length + 1;
-				for (const modifier of [...card.getModifiers()]	.reverse()) { // spread to create copy
+				for (const modifier of [...card.getModifiers()].reverse()) { // spread to create copy
 					if(modifier.getSrc() != NullTypes.NULL_URL && modifier.getName() != NullTypes.NULL_MODIFIER) {
 						root.Renderer.drawModifier(root, modifier, xPosition + (modifierIterator * RenderConstants.CARD_WIDTH / 4), 250 + RenderConstants.CARD_HEIGHT / 4);
-						modifier.setPos(positionFactor +xPosition + (modifierIterator * RenderConstants.CARD_WIDTH / 4), 250 + RenderConstants.CARD_HEIGHT / 4, modifierIterator);
+						modifier.setPos(positionFactor + xPosition + (modifierIterator * RenderConstants.CARD_WIDTH / 4), 250 + RenderConstants.CARD_HEIGHT / 4, modifierIterator);
 					}
 					modifierIterator--;
 				}
